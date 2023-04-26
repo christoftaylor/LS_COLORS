@@ -90,7 +90,7 @@ There are two ways to reference colors from the 256 color palatte - either by in
 38 = foregound and 48 = background, missing from the table above.   
 Follow these values with either a 5 or a 2, respectively, to state how the color will be specified.   
 When using RGB, specify a color palatte. This field will be ignored. This field may get skipped when using some shells.    
-See the file [`Index_Colors.md`](../Index_Colors.md) for a full list of the values that go here.    
+See the file [`Index_Colors.md`](./Index_Colors.md) for a full list of the values that go here.    
 
 By index:   
 38;5;15 = ![](https://placehold.co/15x15/ffffff/ffffff.png) white   
