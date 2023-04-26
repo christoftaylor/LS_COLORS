@@ -100,7 +100,7 @@ Examples:
 48;5;222 = ![](https://placehold.co/15x15/ffd787/ffd787.png) light goldenrod   
   
 ### By RGB value:   
-Each entry is six (or sometimes five) fields separated by semicolons:
+Each entry is six (or sometimes five) fields separated by semicolons:     
 38 = foregound and 48 = background    
 2 = we are going to reference this color by RGB values     
 0 = In the terminal docs, it says this is where we specify a color palette. It then immediately says this field is ignored. In some terminals this field can be omitted. I put in a 0 as a placeholder to be ignored. In many of my tests, I skipped this field completely.     
