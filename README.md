@@ -141,6 +141,7 @@ export LS_COLORS='no=0;38;5;237:fi=0;37:ln=target:ex=31:di=0;38;5;27:st=0;34:tw=
 - [dircolors.h](https://github.com/coreutils/coreutils/blob/master/src/dircolors.hin) - default settings and examples
 - [256 Colors Cheat Sheet](https://www.ditig.com/256-colors-cheat-sheet) - shows the index number for colors
 - [XTerm Control Sequences](https://invisible-island.net/xterm/ctlseqs/ctlseqs.html#h3-Functions-using-CSI-_-ordered-by-the-final-character_s_) - scroll down to 'CSI Pm m  Character Attributes (SGR)' for how numbers work behind each attribute or extention.
+- [vivid](https://github.com/sharkdp/vivid) - an LS_COLORS generator with robust themes support.  
 - [dircolors_solarized](https://github.com/seebi/dircolors-solarized) - example of a fully themed color scheme
 - 
 
