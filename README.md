@@ -50,7 +50,7 @@ You can chain multiple together, e.g. `ln=1;4;5;31` == symlinks appear bold, ita
 ## Basic colors:
 8-bit color terminals support colors specified as 30-37 and 40-47.    
 16-bit color terminals support those plus additional colors 90-97 and 100-107.     
-Terminals that support 256 colors can support referencing colors by RGB codes.     
+256 color terminals support referencing bunches of colors. You'll never guess how many.     
 
 | #  | Foreground colors  |       | #  | Background colors |      |
 |----|--------------------|-------|----|-------------------|------|
@@ -73,13 +73,13 @@ Terminals that support 256 colors can support referencing colors by RGB codes.
 | 97 | Bright White | ![](https://placehold.co/15x15/FFFFFF/FFFFFF.png)`rgb(255,255,255)` | 107 | Bright White | ![](https://placehold.co/15x15/FFFFFF/FFFFFF.png)`rgb(255,255,255)` | 
 
 The definition of 'Black' and 'White' changed once 8-bit became 16-bit, in what we call 'legacy BS'.    
-To further complicate life, the ANSI documentation specifies colors by name, not RGB values, and newer terminals fudge the RBG values to try to make them align with how older terminals displayed those names. Different terminals will use different RGB values for those names.       
-Think of 'white' as 'light grey' and 'bright black' as 'dark grey'.   
-Also, making text bold can make it appear brighter, adding more values to the scale.    
-Here's an example you can use to see the difference, try this in your terminal:   
+To further complicate life, the ANSI documentation specifies colors by name, not RGB values, and newer terminals fudge the RBG values to try to make them align with what they think older terminals meant by those names. Different terminals will use different RGB values for ANSI codes.       
+Think of 'white' as 'light grey' or 'silver' and 'bright black' as 'dark grey' or 'grey'.   
+Making text bold can make it appear brighter, adding more steps to the scale.    
+Here's an example you can use to see the difference - try this in your terminal:   
 ```
 $ touch file.{1..9}
-$ export LS_COLORS='*.1=1;30:*.2=37:*.3=90:*.4=97:*.5=0:*.6=40:*.7=47:*.8=100:*.9=107'
+$ export LS_COLORS='*.1=30:*.2=37:*.3=90:*.4=97:*.5=0:*.6=40:*.7=47:*.8=100:*.9=107'
 $ ls
 file.1  file.2  file.3  file.4  file.5  file.6  file.7  file.8  file.9
 ```
@@ -87,22 +87,36 @@ file.1  file.2  file.3  file.4  file.5  file.6  file.7  file.8  file.9
 
 ## Advanced Colors:   
 There are two ways to reference colors from the 256 color palatte - either by index number or RGB values.   
-38 = foregound and 48 = background, missing from the table above.   
-Follow these values with either a 5 or a 2, respectively, to state how the color will be specified.   
-When using RGB, specify a color palatte. This field will be ignored. This field may get skipped when using some shells.    
-See the file [`Index_Colors.md`](./Index_Colors.md) for a full list of the values that go here.    
 
-By index:   
+### By index:
+Each entry is three fields separated by semicolons:   
+38 = foregound or 48 = background   
+5 = we are going to reference this color by index number   
+i = See the file [`Index_Colors.md`](./Index_Colors.md) for a full list of the values that go here.    
+
+Examples:   
 38;5;15 = ![](https://placehold.co/15x15/ffffff/ffffff.png) white   
 38;5;128 = ![](https://placehold.co/15x15/af00d7/af00d7.png) dark violet   
 48;5;222 = ![](https://placehold.co/15x15/ffd787/ffd787.png) light goldenrod   
-
-By RGB value:     
+  
+### By RGB value:   
+Each entry is six (or sometimes five) fields separated by semicolons:
+38 = foregound and 48 = background    
+2 = we are going to reference this color by RGB values     
+0 = In the terminal docs, it says this is where we specify a color palette. It then immediately says this field is ignored. In some terminals this field can be omitted. I put in a 0 as a placeholder to be ignored. In many of my tests, I skipped this field completely.     
+r = red    
+g = green     
+b = blue      
+  
+Examples:     
 38;2;0;255;255;255 = ![](https://placehold.co/15x15/ffffff/ffffff.png) white   
-38;2;0;175,0,215 = ![](https://placehold.co/15x15/af00d7/af00d7.png) dark violet   
-48;5;0;255,215,135 = ![](https://placehold.co/15x15/ffd787/ffd787.png) light goldenrod   
+38;2;0;175;0;215 = ![](https://placehold.co/15x15/af00d7/af00d7.png) dark violet   
+48;2;0;255;215;135 = ![](https://placehold.co/15x15/ffd787/ffd787.png) light goldenrod   
+
+In my tests, I was able to get consistent results every time with every color using index, but not with the rgb values. That could be the terminal, the server, the user, or any number of other variables. YMMV.    
 
 
+  
 ## Put it all together:
 Each entry will be separated by a colon (:).    
 Values within each entry will be separated by semicolon (;).    
